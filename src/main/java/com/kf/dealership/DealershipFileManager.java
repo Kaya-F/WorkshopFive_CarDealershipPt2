@@ -7,12 +7,12 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 
 public class DealershipFileManager {
-    String dealershipFileLocation = "./src/main/java/com/kf/inventory.txt";
+    String dealershipFileLocation = "./src/main/java/com/kf/dealership/inventory.txt";
 
     public Dealership getDealership() {
 
         try {
-            FileInputStream dealershipFile = new FileInputStream("./src/main/java/com/kf/inventory.txt");
+            FileInputStream dealershipFile = new FileInputStream(dealershipFileLocation);
             Scanner scanner = new Scanner(dealershipFile);
 
             String firstLine_dealershipData = scanner.nextLine();

@@ -1,7 +1,6 @@
 package com.kf.dealership;
 
 import java.util.ArrayList;
-
 public class Dealership {
     private String name;
     private String address;

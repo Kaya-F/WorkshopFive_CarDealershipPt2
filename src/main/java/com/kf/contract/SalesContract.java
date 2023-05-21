@@ -1,7 +1,5 @@
 package com.kf.contract;
 
-import com.kf.contract.Contract;
-
 public class SalesContract extends Contract {
     private double salesTaxAmount;
     private double recordingFee;

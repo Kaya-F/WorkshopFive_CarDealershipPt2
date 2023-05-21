@@ -22,99 +22,38 @@ public class UserInterface {
         int userInput;
 
         do {
-            System.out.println("Please Enter A Command: ");
-            System.out.println("\t[1] Search All Vehicles ");
-            System.out.println("\t[2] Search Vehicles by Price ");
-            System.out.println("\t[3] Search Vehicles by Make/Model ");
-            System.out.println("\t[4] Search Vehicles by Year ");
-            System.out.println("\t[5] Search Vehicles by Color ");
-            System.out.println("\t[6] Search Vehicles by Mileage");
-            System.out.println("\t[7] Search Vehicles by Type (Car, Truck, SUV, Van) ");
-            System.out.println("\t[8] Add a Vehicle ");
-            System.out.println("\t[9] Remove a Vehicle ");
-            System.out.println("\t[99] Exit ");
-
+            System.out.println("| Welcome to Dealership Manager 2.0 |");
+            System.out.println("\t[1] Search");
+            System.out.println("\t[2] Add a Vehicle");
+            System.out.println("\t[3] Remove a Vehicle");
+            System.out.println("\t[4] Sell/Lease a Vehicle");
+            System.out.println("\t[99] Exit");
             System.out.print("Command: ");
             userInput = scanner.nextInt();
 
             switch(userInput) {
                 case 1:
-                    processGetAllVehiclesRequest();
+                    displaySubMenu();
                     break;
                 case 2:
-                    processGetVehiclesByPriceRequest();
-                    break;
-                case 3:
-                    processGetVehiclesByMakeModelRequest();
-                    break;
-                case 4:
-                    processGetVehiclesByYearRequest();
-                    break;
-                case 5:
-                    processGetVehiclesByColorRequest();
-                    break;
-                case 6:
-                    processGetVehiclesByMileageRequest();
-                    break;
-                case 7:
-                    processGetVehiclesByTypeRequest();
-                    break;
-                case 8:
                     processAddVehicleRequest();
                     break;
-                case 9:
+              case 3:
                     processRemoveVehicleRequest();
                     break;
+                case 4:
+//                  processSellOrLeaseRequest();
+                    break;
                 case 99:
-                    System.out.println("Exiting...");
+                    System.out.println("Exiting Dealership 2.0...");
                     break;
                 default:
-                    System.out.println("Command not found, please try again. :) ");
+                    System.out.println("Command not found, please try again. :)");
             }
 
-
         } while (userInput == 99);
-    }
-    public void processGetAllVehiclesRequest() {
-        ArrayList<Vehicle> allVehicles = this.dealership.getAllVehicles();
-        for(Vehicle vehicle : allVehicles){
-            System.out.println(vehicle);
-        }
-    }
-    public void processGetVehiclesByPriceRequest() {
-        System.out.println("Enter a Min Price");
-        float minValue = scanner.nextFloat();
-        System.out.println("Enter a Max Price");
-        float maxValue = scanner.nextFloat();
-
-        ArrayList<Vehicle> vehiclesByPrice = this.dealership.getVehiclesByPrice(minValue, maxValue);
-        for (Vehicle vehicle: vehiclesByPrice){
-            System.out.println(vehicle);
-        }
-
-        scanner.nextLine();
-    }
-
-    public void processGetVehiclesByMakeModelRequest() {
 
     }
-
-    public void processGetVehiclesByYearRequest() {
-
-    }
-
-    public void processGetVehiclesByColorRequest() {
-
-    }
-
-    public void processGetVehiclesByMileageRequest() {
-
-    }
-
-    public void processGetVehiclesByTypeRequest() {
-
-    }
-
     public void processAddVehicleRequest(){
         System.out.println("Provide The Following Car Information:");
 
@@ -162,4 +101,101 @@ public class UserInterface {
         System.out.println("Removing Vehicle From Catalogue...");
 
     }
+
+    public void displaySubMenu() {
+        init();
+        System.out.println(this.dealership);
+        int subInput;
+
+        do {
+            System.out.println("| Search |");
+            System.out.println("\t[1] Search All Vehicles");
+            System.out.println("\t[2] Search Vehicles by Price");
+            System.out.println("\t[3] Search Vehicles by Make/Model");
+            System.out.println("\t[4] Search Vehicles by Year");
+            System.out.println("\t[5] Search Vehicles by Color");
+            System.out.println("\t[6] Search Vehicles by Mileage");
+            System.out.println("\t[7] Search Vehicles by Type (Car, Truck, SUV, Van) ");
+            System.out.println("\t[8] Return");
+
+            System.out.print("Command: ");
+            subInput = scanner.nextInt();
+
+            switch(subInput) {
+                case 1:
+                    processGetAllVehiclesRequest();
+                    break;
+                case 2:
+                    processGetVehiclesByPriceRequest();
+                    break;
+                case 3:
+                    processGetVehiclesByMakeModelRequest();
+                    break;
+                case 4:
+                    processGetVehiclesByYearRequest();
+                    break;
+                case 5:
+                    processGetVehiclesByColorRequest();
+                    break;
+                case 6:
+                    processGetVehiclesByMileageRequest();
+                    break;
+                case 7:
+                    processGetVehiclesByTypeRequest();
+                    break;
+                case 8:
+                   return;
+                case 0:
+                    System.out.println("Returning... ");
+                    break;
+                default:
+                    System.out.println("Command not found, please try again. :) ");
+            }
+
+        } while (subInput == 0);
+
+    }
+
+
+
+    public void processGetAllVehiclesRequest() {
+        ArrayList<Vehicle> allVehicles = this.dealership.getAllVehicles();
+        for(Vehicle vehicle : allVehicles){
+            System.out.println(vehicle);
+        }
+    }
+    public void processGetVehiclesByPriceRequest() {
+        System.out.println("Enter a Min Price");
+        float minValue = scanner.nextFloat();
+        System.out.println("Enter a Max Price");
+        float maxValue = scanner.nextFloat();
+
+        ArrayList<Vehicle> vehiclesByPrice = this.dealership.getVehiclesByPrice(minValue, maxValue);
+        for (Vehicle vehicle: vehiclesByPrice){
+            System.out.println(vehicle);
+        }
+
+        scanner.nextLine();
+    }
+
+    public void processGetVehiclesByMakeModelRequest() {
+
+    }
+
+    public void processGetVehiclesByYearRequest() {
+
+    }
+
+    public void processGetVehiclesByColorRequest() {
+
+    }
+
+    public void processGetVehiclesByMileageRequest() {
+
+    }
+
+    public void processGetVehiclesByTypeRequest() {
+
+    }
+
 }
